@@ -1,0 +1,9 @@
+<!--Screenshots tab's content-->
+<div class="product-screenshots" ng-controller="ScreenshotController as ssCtrl" ng-show="tab.isSet(3)">
+    <ul class="screenshots-thumb">
+        <li ng-repeat="image in product.screenshots">
+            <img ng-class="{active:ssCtrl.isCurrent($index)}" ng-src="{{image}}" ng-click="ssCtrl.setCurrent($index)"/>
+        </li>
+    </ul>
+    <img class="screenshot" ng-src="{{product.screenshots[ssCtrl.current]}}"/>
+</div>
