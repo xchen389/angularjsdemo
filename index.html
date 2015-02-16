@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="gameStore">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="products.js"></script>
+    <title>AngularJS Test</title>
+</head>
+<body ng-controller="StoreController as store">
+    <div id="main">
+        <h1>- AngularJS Demo -</h1>
+        
+        <!--Product item-->
+        <div class="container" ng-repeat="product in store.products">
+            <div class="cover"><img ng-src="{{product.thumb_url}}"/></div>
+            <section>
+                <h3>{{product.name}}</h3>
+                <p>
+                    <strong>{{product.price | currency}}</strong>
+                    <br/>
+                    <span ng-show="product.buy_price!='null'">Buy Price: {{product.buy_price | currency}}</span>
+                </p>
+            </section>
+            
+            <!--Product tabs-->
+            <product-tabs></product-tabs>
+        </div>
+    </div>
+    
+    <!--Footer-->
+    <div class="footer">
+        Reference: <a href="http://www.gamesdepartment.co.uk/json-api/info/14">Games Department</a>
+    </div>
+</body>
+</html> 
