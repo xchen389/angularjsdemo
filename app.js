@@ -4,7 +4,7 @@
     app.controller('StoreController', ['$http', function($http){
         var store = this;
         store.products = [];
-        $http.get('/game-products.json').
+        $http.get('game-products.json').
         success(function(data){
             store.products = data;
         }).
