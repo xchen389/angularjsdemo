@@ -1,0 +1,43 @@
+<!--Reviews tab's content-->
+<div class="product-reviews" ng-show="tab.isSet(4)">
+    
+    <!--List of existing reviews-->
+    <ul class="list-common" ng-show="product.reviews.length">
+        
+        <li ng-repeat="review in product.reviews">
+            <blockquote>
+                <strong>{{review.stars}} Stars</strong><br/>
+                <strong>{{review.title | uppercase}}</strong>
+                {{review.body}}
+                <cite>--{{review.author}}</cite>
+            </blockquote>
+        </li>
+    </ul>
+    
+    <form class="revForm" name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
+        <h4>Submit a Review</h4>
+        
+        <!--Live review-->
+        <blockquote>
+            <strong>{{reviewCtrl.review.stars}} Stars</strong><br/>
+            <strong>{{reviewCtrl.review.title | uppercase}}</strong>
+            {{reviewCtrl.review.body}}
+            <cite>--{{reviewCtrl.review.author}}</cite>
+        </blockquote>
+        
+        <!--Review form-->
+        <fieldset class="rev">
+            <select class="form-control" ng-model="reviewCtrl.review.stars" ng-options="stars for stars in [5,4,3,2,1]" required title="Stars">
+                <option value>Rate the Game</option>
+            </select>
+        </fieldset>
+        <fieldset class="rev">
+            <textarea rows="4" class="form-control" ng-model="reviewCtrl.review.body" required placeholder="Write a short review about the game..." title="Review"></textarea>
+        </fieldset>
+        <fieldset class="rev">
+            <input class="form-control" ng-model="reviewCtrl.review.author" type="text" placeholder="Anonymous" title="Name" required />
+        </fieldset>
+        <input class="submit-button" type="submit" value="Submit Review"/>
+    </form>
+    <div style="clear: both;">&nbsp;</div>
+</div>
